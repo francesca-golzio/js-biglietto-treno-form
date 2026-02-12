@@ -18,34 +18,47 @@ btnEl.addEventListener('click', function(e) {
   let user_name = nameEl.value;
   let age = ageEl.value;   
   let kilometers = Number(kmEl.value);
-  //console.log(user_name, age, kilometers);  
+  //console.log(user_name, age, kilometers);
+  let cardNameEl = document.querySelector('.cardName'); 
+  console.log(cardNameEl);
+  
+  let cardPricePlan = document.querySelector('.cardPricePlan');
+  let cardKm = document.querySelector('.cardKm');
+  let cardPrice = document.querySelector('.cardPrice');
   
   /* Determino il costo totale del biglietto */ 
-    /* prezzo in base alla tratta (km) */
-    price_km_based = (kilometers * 0.21); 
-    //console.log(price_km_based);
+  /* prezzo in base alla tratta (km) */
+  price_km_based = (kilometers * 0.21); 
+  //console.log(price_km_based);
+  
+  /* Controllo se ha diritto a sconti (e, nel caso, li applico */ 
+  
+  if (age === 'minore') {
+    output_price = (price_km_based - (price_km_based / 100) * 20);
+    /* Arrotondo il prezzo ai centesimi */
+    user_price = `${output_price.toFixed(2)} euro`;  
     
-    /* Controllo se ha diritto a sconti (e, nel caso, li applico */ 
+  } else if (age === 'over 65') {
+    output_price = (price_km_based - (price_km_based / 100) * 40);
+    /* Arrotondo il prezzo ai centesimi */
+    user_price = `${output_price.toFixed(2)} euro`;  
     
-    if (age === 'minore') {
-        output_price = (price_km_based - (price_km_based / 100) * 20);
-        /* Arrotondo il prezzo ai centesimi */
-        user_price = `${output_price.toFixed(2)} euro`;  
-        
-      } else if (age === 'over 65') {
-        output_price = (price_km_based - (price_km_based / 100) * 40);
-        /* Arrotondo il prezzo ai centesimi */
-        user_price = `${output_price.toFixed(2)} euro`;  
-        
-      } else if (age === 'adulto') {      
-        output_price = price_km_based;
-        //console.log(output_price);
-        /* Arrotondo il prezzo ai centesimi */
-        user_price = `${output_price.toFixed(2)} euro`;  
-      }
-    /* Restituisco il prezzo del biglietto (stampo in console) */
-    console.log(user_price);
-    
+  } else if (age === 'adulto') {      
+    output_price = price_km_based;
+    //console.log(output_price);
+    /* Arrotondo il prezzo ai centesimi */
+    user_price = `${output_price.toFixed(2)} euro`;  
+  }
+  /* Restituisco il prezzo del biglietto (stampo in console) */
+  console.log(user_price);
+  
+  /* Stampo in pagina il biglietto */
+  cardNameEl.innerHTML = `${user_name}`;
+  cardPricePlan.innerHTML = age;
+  cardKm.innerHTML = kilometers;
+  cardPrice.innerHTML = user_price;
+
+
   })
   
 
