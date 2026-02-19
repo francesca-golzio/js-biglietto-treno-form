@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="it">
+<html lang="en">
 
 <head>
   <title>Calcola il prezzo del tuo biglietto del treno</title>
@@ -8,32 +8,104 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <!-- Bootstrap CSS v5.2.1 -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+  <!-- Link Bootstrap icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+  <!-- Link custom CSS stylesheet -->
+  <link rel="stylesheet" href="./assets/CSS/style.css">
 </head>
 
 <body>
   <header>
-
+    <h1>
+      <i class="bi bi-ticket-perforated-fill"></i>
+      Get your train ticket
+    </h1>
   </header>
 
   <main>
-    
+
+    <!-- tag used for first two milestone
     <input type="text" id="name" placeholder="passenger name">
     <input type="text" id="age" placeholder="passenger age">    
     <input type="text" id="km" placeholder="travel length">
-    <button type="submit">Invia</button>
-   
+    <button type="submit">Invia</button>-->
 
-    <div>
-      <p class="cardName"></p>
-      <p class="cardKm"></p>
-      <p class="cardFare"></p>
-      <p class="cardPrice"></p>
+    <div class="container d-flex justify-content-center">
+      <form class="">
+        <div class="form-text pb-3">
+          Please, fill in the form in order to get the price of your ticket.
+        </div>
+        <div class="d-flex" id="inputContainer">
+          <div class="mb-3"><!-- name -->
+            <label for="name" class="form-label">
+              Passenger Name
+            </label>
+            <input type="text" class="form-control" id="name" placeholder="First and Last Name">
+          </div>
+          <div class="mb-3"><!-- age -->
+            <label for="age" class="form-label">
+              Passenger Age
+            </label>
+            <select class="form-select form-select-sm" name="age" id="age">
+              <option value="no_selection">
+                Choose Passenger Age
+              </option>
+              <option value="Minor">
+                Minor
+              </option>
+              <option value="Adult">
+                Adult
+              </option>
+              <option value="Over 65">
+                Over 65
+              </option>
+            </select>
+          </div>
+          <div class="mb-3"><!-- km -->
+            <label for="km" class="form-label">
+              Ride Length
+            </label>
+            <input type="number" class="form-control" id="km" placeholder="Ride length (km)">
+          </div>
+        </div>
+        <div class="mb-3 form-check">
+          <input type="checkbox" class="form-check-input" id="privacyCheck">
+          <label class="form-check-label form-text fst-italic" for="privacyCheck">
+            I have read and agree to the <a href="#">privacy policy.</a>
+          </label>
+        </div>
+        <button class="btn " role="button" type="submit" id="submit_button">
+          Submit
+        </button>
+      </form>
+
     </div>
 
+    <!-- <div>
+      <p class="cardName card-text"></p>
+      <p class="cardKm card-text"></p>
+      <p class="cardFare card-text"></p>
+      <p class="cardPrice card-text"></p>
+    </div> -->
 
-
+    <div class="ticket_container d-flex justify-content-center">
+      <div class="card mt-4"><!-- ⚠️ aggiungi d-none -->
+        <div class="card-header d-flex px-3 pt-3 pb-2">
+          <h5 id="ticketId">n° AJ56F88V2</h5>
+          <div id="ferryLogo">
+            Dreamy Railway
+            <i class="bi bi-ticket-perforated-fill"></i>
+          </div>
+        </div>
+        <div class="card-body">
+          <p class="cardName card-text"></p>
+          <p class="cardKm card-text"></p>
+          <p class="cardFare card-text"></p>
+          <p class="cardPrice card-text"></p>
+        </div>
+      </div>
+    </div>
 
 
 
@@ -43,7 +115,7 @@
 
   </footer>
 
-  <!-- Bootstrap JavaScript Libraries -->
+  <!-- JS framework  -->
   <!-- #region ↑ -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
     integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">

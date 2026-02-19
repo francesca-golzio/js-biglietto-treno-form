@@ -32,37 +32,42 @@ btnEl.addEventListener('click', function(e) {
   //console.log(price_km_based);
   
   /* Controllo se ha diritto a sconti (e, nel caso, li applico) */   
-  if (age === 'minore') {
+  if (age === 'Minor') {
     output_price = (price_km_based - (price_km_based / 100) * 20);
     /* Arrotondo il prezzo ai centesimi */
     user_price = `${output_price.toFixed(2)}`;  
     fare = 'Minor ticket (20% off)'
     
-  } else if (age === 'over 65') {
+  } else if (age === 'Over 65') {
     output_price = (price_km_based - (price_km_based / 100) * 40);
     /* Arrotondo il prezzo ai centesimi */
     user_price = output_price.toFixed(2);  
     fare = 'Elder ticket (40% off)'
     
-  } else { // adulto
+  } else if (age === 'Adult') { // adulto
     output_price = price_km_based;
     //console.log(output_price);
     /* Arrotondo il prezzo ai centesimi */
     user_price = output_price.toFixed(2);  
     fare = 'Adult ticket'
-    }
+  } else {
+    alert('Age not selected! Please, select the right Passenger Age')
+  }
 
   /* Restituisco il prezzo del biglietto (stampo in console) */
   console.log(user_price);
   
   /* Stampo in pagina il biglietto */
-  cardNameEl.innerHTML = `Name: ${passenger_name}`;
+  cardNameEl.innerHTML = `Passenger: ${passenger_name}`;
   cardFare.innerHTML = `Ticket Fare: ${fare}`;
-  cardKm.innerHTML = `Journey Length: ${kilometers} km`;
+  cardKm.innerHTML = `${kilometers} km`;
   cardPrice.innerHTML = `Ticket Price: ${user_price} euro`;
   
   console.log(cardNameEl.innerHTML, cardFare.innerHTML, cardKm.innerHTML, cardPrice.innerHTML);
   })
+
+
+  
   
 
 
