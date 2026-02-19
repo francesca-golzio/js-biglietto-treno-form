@@ -15,15 +15,15 @@ btnEl.addEventListener('click', function(e) {
 
   /* Raccolgo dati */
   let price_km_based, output_price, user_price;
-  let user_name = nameEl.value;
+  let passenger_name = nameEl.value;
   let age = ageEl.value;   
   let kilometers = Number(kmEl.value);
-  //console.log(user_name, age, kilometers);
+  //console.log(passenger_name, age, kilometers);
+  let fare;
   let cardNameEl = document.querySelector('.cardName'); 
-  console.log(cardNameEl);
-  
-  let cardPricePlan = document.querySelector('.cardPricePlan');
+  //console.log(cardNameEl);  
   let cardKm = document.querySelector('.cardKm');
+  let cardFare = document.querySelector('.cardFare');
   let cardPrice = document.querySelector('.cardPrice');
   
   /* Determino il costo totale del biglietto */ 
@@ -31,34 +31,37 @@ btnEl.addEventListener('click', function(e) {
   price_km_based = (kilometers * 0.21); 
   //console.log(price_km_based);
   
-  /* Controllo se ha diritto a sconti (e, nel caso, li applico */ 
-  
+  /* Controllo se ha diritto a sconti (e, nel caso, li applico) */   
   if (age === 'minore') {
     output_price = (price_km_based - (price_km_based / 100) * 20);
     /* Arrotondo il prezzo ai centesimi */
-    user_price = `${output_price.toFixed(2)} euro`;  
+    user_price = `${output_price.toFixed(2)}`;  
+    fare = 'Minor ticket (20% off)'
     
   } else if (age === 'over 65') {
     output_price = (price_km_based - (price_km_based / 100) * 40);
     /* Arrotondo il prezzo ai centesimi */
-    user_price = `${output_price.toFixed(2)} euro`;  
+    user_price = output_price.toFixed(2);  
+    fare = 'Elder ticket (40% off)'
     
-  } else if (age === 'adulto') {      
+  } else { // adulto
     output_price = price_km_based;
     //console.log(output_price);
     /* Arrotondo il prezzo ai centesimi */
-    user_price = `${output_price.toFixed(2)} euro`;  
-  }
+    user_price = output_price.toFixed(2);  
+    fare = 'Adult ticket'
+    }
+
   /* Restituisco il prezzo del biglietto (stampo in console) */
   console.log(user_price);
   
   /* Stampo in pagina il biglietto */
-  cardNameEl.innerHTML = `${user_name}`;
-  cardPricePlan.innerHTML = age;
-  cardKm.innerHTML = kilometers;
-  cardPrice.innerHTML = user_price;
-
-
+  cardNameEl.innerHTML = `Name: ${passenger_name}`;
+  cardFare.innerHTML = `Ticket Fare: ${fare}`;
+  cardKm.innerHTML = `Journey Length: ${kilometers} km`;
+  cardPrice.innerHTML = `Ticket Price: ${user_price} euro`;
+  
+  console.log(cardNameEl.innerHTML, cardFare.innerHTML, cardKm.innerHTML, cardPrice.innerHTML);
   })
   
 
